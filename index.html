@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <title>Swap Volume Bot</title>
   <style>
-    body { font-family: Arial, sans-serif; display: flex; gap: 20px; padding: 20px; }
+    body { font-family: Arial, sans-serif; padding: 20px; margin: 0; }
+    .header { padding: 10px; background: #f0f0f0; margin-bottom: 20px; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; }
+    .main { display: flex; gap: 20px; }
     .left, .right { flex: 1; border: 1px solid #ccc; padding: 20px; border-radius: 8px; }
     input, button { width: 100%; margin: 10px 0; padding: 10px; }
     button { cursor: pointer; }
@@ -13,19 +15,27 @@
   </style>
 </head>
 <body>
-  <div class="left">
-    <h3>Thông tin giao dịch</h3>
-    <input type="text" id="privateKey" placeholder="Private Key">
-    <input type="text" id="tokenAddress" placeholder="Token Address">
-    <input type="number" id="totalVolume" placeholder="Tổng Volume (BNB)">
-    <input type="number" id="perTxVolume" placeholder="Volume mỗi lệnh (BNB)">
-    <button onclick="startBot()">🚀 Start Bot</button>
-    <button onclick="cancelBot()">❌ Cancel</button>
+  <div class="header">
+    <div><strong>📊 Tổng volume đã chạy:</strong> <span id="totalVol">0.0000</span> BNB</div>
+    <div><strong>💰 Số dư ví:</strong> <span id="walletBalance">Đang tải...</span> BNB</div>
   </div>
-  <div class="right">
-    <h3>Logs</h3>
-    <div class="log" id="logBox"></div>
+
+  <div class="main">
+    <div class="left">
+      <h3>Thông tin giao dịch</h3>
+      <input type="text" id="privateKey" placeholder="Private Key">
+      <input type="text" id="tokenAddress" placeholder="Token Address">
+      <input type="number" id="totalVolume" placeholder="Tổng Volume (BNB)">
+      <input type="number" id="perTxVolume" placeholder="Volume mỗi lệnh (BNB)">
+      <button onclick="startBot()">🚀 Start Bot</button>
+      <button onclick="cancelBot()">❌ Cancel</button>
+    </div>
+    <div class="right">
+      <h3>Logs</h3>
+      <div class="log" id="logBox"></div>
+    </div>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/ethers@6.7.0/dist/ethers.umd.min.js"></script>
   <script src="main.js"></script>
 </body>
