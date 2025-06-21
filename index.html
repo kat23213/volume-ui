@@ -1,17 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
   <title>Swap Volume Bot</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; margin: 0; }
-    .header { padding: 10px; background: #f0f0f0; margin-bottom: 20px; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; }
-    .main { display: flex; gap: 20px; }
-    .left, .right { flex: 1; border: 1px solid #ccc; padding: 20px; border-radius: 8px; }
-    input, button { width: 100%; margin: 10px 0; padding: 10px; }
-    button { cursor: pointer; }
-    button:hover { background: #4CAF50; color: white; }
-    .log { background: #f9f9f9; padding: 10px; height: 300px; overflow-y: scroll; white-space: pre-wrap; border: 1px solid #ddd; }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #333;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      background: #1e293b;
+      color: white;
+      font-size: 16px;
+    }
+    .main {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      gap: 20px;
+    }
+    .left, .right {
+      flex: 1 1 400px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    h3 {
+      margin-top: 0;
+      font-size: 20px;
+      color: #1e40af;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background: #0ea5e9;
+      color: white;
+    }
+    .start-btn {
+      background: #10b981;
+      color: white;
+    }
+    .cancel-btn {
+      background: #ef4444;
+      color: white;
+    }
+    .log {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 15px;
+      height: 300px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      font-family: monospace;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
@@ -22,16 +89,16 @@
 
   <div class="main">
     <div class="left">
-      <h3>Thông tin giao dịch</h3>
-      <input type="text" id="privateKey" placeholder="Private Key">
-      <input type="text" id="tokenAddress" placeholder="Token Address">
-      <input type="number" id="totalVolume" placeholder="Tổng Volume (BNB)">
-      <input type="number" id="perTxVolume" placeholder="Volume mỗi lệnh (BNB)">
-      <button onclick="startBot()">🚀 Start Bot</button>
-      <button onclick="cancelBot()">❌ Cancel</button>
+      <h3>🧾 Thông tin giao dịch</h3>
+      <input type="password" id="privateKey" placeholder="🔐 Private Key">
+      <input type="text" id="tokenAddress" placeholder="🏷️ Token Address">
+      <input type="number" id="totalVolume" placeholder="📦 Tổng Volume (BNB)">
+      <input type="number" id="perTxVolume" placeholder="🧮 Volume mỗi lệnh (BNB)">
+      <button class="start-btn" onclick="startBot()">🚀 Bắt đầu Bot</button>
+      <button class="cancel-btn" onclick="cancelBot()">❌ Huỷ Bot</button>
     </div>
     <div class="right">
-      <h3>Logs</h3>
+      <h3>📜 Lịch sử giao dịch</h3>
       <div class="log" id="logBox"></div>
     </div>
   </div>
